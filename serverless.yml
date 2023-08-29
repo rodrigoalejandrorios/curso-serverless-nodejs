@@ -1,0 +1,35 @@
+service: curso-sls-nodejs-ts
+frameworkVersion: '3'
+provider:
+  name: aws
+  runtime: nodejs18.x
+  environment:
+    AWS_NODEJS_CONNECTION_REUSE_ENABLED: "1"
+    STAGE : '${self:custom.stage}'
+    DB_HOST: 'localhost'
+    DB_PORT: '5436'
+    DB_USER: 'uslscodrr'
+    DB_PASSWORD: 'secret1234'
+    DB_SCHEMA: 'codrrslsdb'
+functions:
+  #Users
+  - ${file(./src/users/infrastrucure/functions/functions.yml)}
+plugins:
+  - serverless-esbuild
+  - serverless-offline
+package:
+  exclude:
+    - node_modules/**/*
+  include:
+    handler.ts
+custom: 
+  stage: '${opt:stage, "local"}'
+  esbuild:
+    bundle: true
+    minify: false
+    sourcemap: true
+    exclude: ["aws-sdk"]
+    target: "node14"
+    define: { "require.resolve": undefined }
+    platform: "node"
+    concurrency: 10
