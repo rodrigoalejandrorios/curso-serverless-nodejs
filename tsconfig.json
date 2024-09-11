@@ -2,7 +2,10 @@
   "compilerOptions": {
     "module": "commonjs",
     "target": "es6",
-    "lib": [ "es6", "dom" ],
+    "lib": [
+      "es6",
+      "dom"
+    ],
     "moduleResolution": "node",
     "rootDir": "./",
     "sourceMap": true,
@@ -17,6 +20,12 @@
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
   },
-  "exclude": [ "node_modules", "build", "webpack" ],
-  "types": [ "typePatches" ]
+  "exclude": [
+    "node_modules",
+    "build",
+    "webpack"
+  ],
+  "types": [
+    "typePatches"
+  ]
 }

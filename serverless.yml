@@ -10,10 +10,7 @@ plugins:
   - serverless-esbuild
   - serverless-offline
   - serverless-localstack
-package:
-  exclude:
-    - node_modules/**/*
-  include: handler.ts
+
 custom:
   stage: '${opt:stage, "local"}'
   localstack:
@@ -30,8 +27,5 @@ custom:
     bundle: true
     minify: false
     sourcemap: true
-    exclude: ["aws-sdk"]
-    target: "node14"
-    define: { "require.resolve": undefined }
-    platform: "node"
+    target: "node18"
     concurrency: 10
