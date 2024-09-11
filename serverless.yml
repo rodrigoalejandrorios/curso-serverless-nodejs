@@ -1,29 +1,31 @@
 service: curso-sls-nodejs-ts
-frameworkVersion: '3'
+frameworkVersion: "3"
 provider:
   name: aws
   runtime: nodejs18.x
-  environment:
-    AWS_NODEJS_CONNECTION_REUSE_ENABLED: "1"
-    STAGE : '${self:custom.stage}'
-    DB_HOST: 'localhost'
-    DB_PORT: '5436'
-    DB_USER: 'uslscodrr'
-    DB_PASSWORD: 'secret1234'
-    DB_SCHEMA: 'codrrslsdb'
+  environment: ${file(./src/config/environment.yml):env.${self:custom.stage}}
 functions:
-  #Users
-  - ${file(./src/users/infrastrucure/functions/functions.yml)}
+  # Here your functions
 plugins:
   - serverless-esbuild
   - serverless-offline
+  - serverless-localstack
 package:
   exclude:
     - node_modules/**/*
-  include:
-    handler.ts
-custom: 
+  include: handler.ts
+custom:
   stage: '${opt:stage, "local"}'
+  localstack:
+    stages:
+      - local
+    host: http://localhost
+    edgePort: 4566
+    autostart: false
+    lambda:
+      mountCode: True
+    docker:
+      sudo: False
   esbuild:
     bundle: true
     minify: false
