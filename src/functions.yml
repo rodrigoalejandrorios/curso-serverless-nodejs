@@ -1,0 +1,6 @@
+example_hello:
+  handler: src/handler.sayHello
+  events:
+    - http:
+        path: example/say-hello
+        method: get

@@ -1,13 +1,13 @@
 env:
-  lcl:
+  local:
     AWS_NODEJS_CONNECTION_REUSE_ENABLED: "1"
     STAGE: "${self:custom.stage}"
-  dev:
+  develop:
     AWS_NODEJS_CONNECTION_REUSE_ENABLED: "1"
     STAGE: "${self:custom.stage}"
-  stg:
+  staging:
     AWS_NODEJS_CONNECTION_REUSE_ENABLED: "1"
     STAGE: "${self:custom.stage}"
-  prd:
+  prod:
     AWS_NODEJS_CONNECTION_REUSE_ENABLED: "1"
     STAGE: "${self:custom.stage}"

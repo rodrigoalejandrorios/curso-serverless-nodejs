@@ -3,9 +3,11 @@ frameworkVersion: "3"
 provider:
   name: aws
   runtime: nodejs18.x
+  region: us-east-1
+  profile: "${param:prof,null}"
   environment: ${file(./src/config/environment.yml):env.${self:custom.stage}}
 functions:
-  # Here your functions
+  - ${file(./src/functions.yml)}
 plugins:
   - serverless-esbuild
   - serverless-offline
