@@ -2,7 +2,7 @@
   "name": "sls-dev-local",
   "scripts": {
     "release": "standard-version",
-    "sls:dev": "sls offline --stage develop --region sa-east-1",
+    "sls:dev": "sls offline --stage develop",
     "test": "jest",
     "test:watch": "jest --watch",
     "test:cov": "jest --coverage",

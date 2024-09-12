@@ -7,7 +7,7 @@ export const sayHello = async (event: APIGatewayProxyEvent) => {
       response: {
         say: "hello!",
       },
-      statusCode: "CREATED",
+      statusCode: "OK",
     });
   } catch (error) {
     return formatJSONResponse<ErrorCatch>({
